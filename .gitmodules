@@ -1,0 +1,21 @@
+[submodule "lib/forge-std"]
+	path = lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "lib/solmate"]
+	path = lib/solmate
+	url = https://github.com/rari-capital/solmate
+[submodule "lib/svg"]
+	path = lib/svg
+	url = /home/evmgolf/svg
+[submodule "lib/codec"]
+	path = lib/codec
+	url = /home/evmgolf/codec
+[submodule "lib/erc721metadata-json"]
+	path = lib/erc721metadata-json
+	url = /home/evmgolf/erc721metadata-json
+[submodule "lib/create2"]
+	path = lib/create2
+	url = /home/evmgolf/create2
+[submodule "lib/samples"]
+	path = lib/samples
+	url = /home/evmgolf/samples
