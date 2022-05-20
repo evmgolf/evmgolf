@@ -6,16 +6,16 @@
 	url = https://github.com/rari-capital/solmate
 [submodule "lib/svg"]
 	path = lib/svg
-	url = /home/evmgolf/svg
+	url = https://github.com/evmgolf/svg
 [submodule "lib/codec"]
 	path = lib/codec
-	url = /home/evmgolf/codec
+	url = https://github.com/evmgolf/codec
 [submodule "lib/erc721metadata-json"]
 	path = lib/erc721metadata-json
-	url = /home/evmgolf/erc721metadata-json
+	url = https://github.com/erc721metadata-json
 [submodule "lib/create2"]
 	path = lib/create2
-	url = /home/evmgolf/create2
+	url = https://github.com/evmgolf/create2
 [submodule "lib/samples"]
 	path = lib/samples
-	url = /home/evmgolf/samples
+	url = https://github.com/evmgolf/samples
