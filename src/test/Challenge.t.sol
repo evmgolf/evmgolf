@@ -40,7 +40,7 @@ contract ChallengesTest is Test, ERC721TokenReceiver {
   using Id for address;
 
   event Transfer(address indexed from, address indexed to, uint256 indexed id);
-  event AcceptChallenge(uint indexed id, bool accepted, bytes message);
+  event ReviewChallenge(uint indexed id, bool accepted, bytes message);
 
   address trueChallenge;
   Challenges challenges;
@@ -73,7 +73,7 @@ contract ChallengesTest is Test, ERC721TokenReceiver {
     challenges.reviewChallenge(trueChallenge.id(), accepted, message);
 
     vm.expectEmit(true, true, true, true);
-    emit AcceptChallenge(trueChallenge.id(), accepted, message);
+    emit ReviewChallenge(trueChallenge.id(), accepted, message);
     challenges.reviewChallenge(trueChallenge.id(), accepted, message);
     if (accepted) {
       assertEq(challenges.ownerOf(trueChallenge.id()), address(this));

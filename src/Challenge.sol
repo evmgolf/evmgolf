@@ -18,7 +18,7 @@ contract Challenges is ERC721, MultiRolesAuthority {
   using Id for uint;
   using Hexadecimal for address;
 
-  event AcceptChallenge(uint indexed id, bool accepted, bytes message);
+  event ReviewChallenge(uint indexed id, bool accepted, bytes message);
   mapping (uint => bool) public accepted;
   mapping (uint => bytes) public descriptionOf;
 
@@ -76,6 +76,6 @@ contract Challenges is ERC721, MultiRolesAuthority {
       _burn(id);
       delete descriptionOf[id];
     }
-    emit AcceptChallenge(id, _accepted, message);
+    emit ReviewChallenge(id, _accepted, message);
   }
 }
