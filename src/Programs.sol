@@ -26,20 +26,9 @@ contract Programs is ERC721 {
   using Decimal for uint;
 
   uint constant public salt = 0;
-  address public admin;
 
   constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {
     _ownerOf[address(this).id()] = msg.sender;
-    admin = msg.sender;
-  }
-
-  modifier onlyAdmin() {
-    require(msg.sender == admin);
-    _;
-  }
-
-  function setAdmin(address _admin) external onlyAdmin {
-    admin = _admin;
   }
 
   function tokenURI(address program) public view returns (string memory) {
