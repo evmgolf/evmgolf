@@ -6,7 +6,7 @@ import {Decimal} from "codec/Decimal.sol";
 import {Hexadecimal} from "codec/Hexadecimal.sol";
 import {SVG} from "svg/SVG.sol";
 import {ERC721MetadataJSON} from "erc721metadata-json/ERC721MetadataJSON.sol";
-import {Id} from "./Programs.sol";
+import {Id, Programs} from "./Programs.sol";
 import {Challenge, Challenges} from "./Challenge.sol";
 
 struct Trophy {
@@ -35,9 +35,11 @@ contract Trophies is ERC721 {
   mapping (address => RecordStruct) public records;
 
   Challenges challenges;
+  Programs programs;
 
-  constructor (string memory _name, string memory _symbol, address _challenges) ERC721(_name, _symbol) {
+  constructor (string memory _name, string memory _symbol, address _challenges, address _programs) ERC721(_name, _symbol) {
     challenges = Challenges(_challenges);
+    programs = Programs(_programs);
   }
 
   function _mint(address to) internal returns (uint id) {
@@ -141,6 +143,7 @@ contract Trophies is ERC721 {
 
   function submit(address challenge, address program) external returns (uint id) {
     require(challenges.accepted(challenge.id()), "CHALLENGE_NOT_ACCEPTED");
+    require(programs.ownerOf(program.id()) == msg.sender, "PROGRAM_NOT_OWNED");
     uint gas = gasleft();
     bool result = Challenge(challenge).challenge(program);
     gas -= gasleft();

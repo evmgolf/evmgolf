@@ -32,7 +32,7 @@ contract TrophiesTest is Test, ERC721TokenReceiver {
     trueProgram = programs.write(type(TrueProgram).creationCode);
     trueSlowProgram = programs.write(type(TrueSlowProgram).creationCode);
     falseProgram = programs.write(type(FalseProgram).creationCode);
-    trophies = new Trophies("Trophies", "TROPHIES", address(challenges));
+    trophies = new Trophies("Trophies", "TROPHIES", address(challenges), address(programs));
   }
 
   function testFund(uint value) public {
