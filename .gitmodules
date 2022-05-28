@@ -12,7 +12,7 @@
 	url = https://github.com/evmgolf/codec
 [submodule "lib/erc721metadata-json"]
 	path = lib/erc721metadata-json
-	url = https://github.com/erc721metadata-json
+	url = https://github.com/evmgolf/erc721metadata-json
 [submodule "lib/create2"]
 	path = lib/create2
 	url = https://github.com/evmgolf/create2
