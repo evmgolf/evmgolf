@@ -13,7 +13,7 @@ contract TrophiesTest is Test, ERC721TokenReceiver {
   event Transfer(address indexed from, address indexed to, uint256 indexed id);
   event Funded(address indexed challenge, uint value);
   event Payed(address indexed winner, address indexed challenge, uint value);
-  event Record(address indexed challenge, address indexed program, uint size, uint gas);
+  event Created(uint id, address challenge, address program, uint size, uint gas);
 
   address trueChallenge;
   address trueProgram;
@@ -74,7 +74,7 @@ contract TrophiesTest is Test, ERC721TokenReceiver {
     vm.expectEmit(true, true, true, false);
     emit Transfer(address(0), address(this), trophies.totalSupply());
     vm.expectEmit(true, true, true, false);
-    emit Record(trueChallenge, trueSlowProgram, trueSlowProgram.code.length, 0);
+    emit Created(0, trueChallenge, trueSlowProgram, trueSlowProgram.code.length, 0);
     uint id = trophies.submit(trueChallenge, trueSlowProgram);
     assertEq(trophies.ownerOf(id), address(this));
     assertEq(trophies.balanceOf(address(this)), 1);
@@ -82,10 +82,10 @@ contract TrophiesTest is Test, ERC721TokenReceiver {
     assertTrue(recordSize);
     assertTrue(recordGas);
 
-    vm.expectEmit(true, true, true, false);
+    vm.expectEmit(true, true, true, true);
     emit Transfer(address(0), address(this), trophies.totalSupply());
     vm.expectEmit(true, true, true, false);
-    emit Record(trueChallenge, trueProgram, trueProgram.code.length, 0);
+    emit Created(1, trueChallenge, trueProgram, trueProgram.code.length, 0);
     uint id1 = trophies.submit(trueChallenge, trueProgram);
     assertEq(trophies.ownerOf(id1), address(this));
     assertEq(trophies.balanceOf(address(this)), 2);

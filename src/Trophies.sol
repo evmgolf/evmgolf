@@ -27,7 +27,7 @@ contract Trophies is ERC721 {
 
   event Funded(address indexed challenge, uint value);
   event Payed(address indexed winner, address indexed challenge, uint value);
-  event Record(address indexed challenge, address indexed program, uint size, uint gas);
+  event Created(uint id, address challenge, address program, uint size, uint gas);
 
   uint public totalSupply;
   mapping (uint => Trophy) trophies;
@@ -170,9 +170,9 @@ contract Trophies is ERC721 {
       }
 
       if (_isRecord) {
-        emit Record(challenge, program, size, gas);
         records[challenge] = record;
       }
+      emit Created(id, challenge, program, size, gas);
     }
 
     uint value = funds[challenge];
